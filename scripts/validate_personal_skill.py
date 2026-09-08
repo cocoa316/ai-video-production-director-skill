@@ -38,8 +38,9 @@ REQUIRED_PATHS = (
 )
 INVARIANTS = {
     "dialogue language is separate from prompt language": "提示词正文语言与成片对白语言分别处理",
-    "prompt defaults to conversation language": "提示词正文必须沿用当前对话语言",
-    "no unsolicited English companion": "不自行附加英文版",
+    "prompt defaults to Chinese": "提示词正文必须默认使用中文",
+    "Chinese and English switching": "模型提示词支持中文和英文切换",
+    "no unsolicited translation": "不自行附加另一语言版本",
     "single professional delivery may remain lightweight": "单片专业交付仍可使用轻量项目记录",
     "platform-neutral creative route exists": "平台未确定的创意发展",
     "visual and dense storyboard modes are distinct": "视觉故事板图”和 Seedance 的",

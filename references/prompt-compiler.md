@@ -40,7 +40,7 @@ When an accepted source is attached as a reference, the source carries the state
 
 ## Natural-Language Prompt Rules
 
-The parent Skill selects the final prompt language. The compiler must render all generation prose in that language and treat English source modules and templates as internal references only. Unless the user explicitly asks for English, bilingual output, or translation, do not emit English prose or an English companion version. Quoted dialogue keeps its spoken language; exact reference tags, proper names, model names, and necessary acronyms remain unchanged.
+The parent Skill selects the final prompt language. The compiler must render all generation prose in that language and treat English source modules and templates as internal references only. Use Chinese by default when the user does not specify a prompt language; switch to English only when explicitly requested. Do not emit an unsolicited companion translation. Quoted dialogue keeps its spoken language; exact reference tags, proper names, model names, and necessary acronyms remain unchanged.
 
 Do not emit internal JSON or any canonical/internal label to Seedance: this includes dramatic function, turn, POV, power shift, hidden want/objective, obstacle/tactic, subtext/contradiction, visible suppressed behavior, non-transferable detail, provenance, or source, stock solution refused, value endpoints, prompt carriers, utility intent, and non-narrative refusal. Do not include all future clips. Do not describe a planned ending as if it happened. Do not replay completed actions. Do not perform reserved later actions. Do not invent deterministic guarantees. Do not re-describe content an attached source reference already shows.
 
