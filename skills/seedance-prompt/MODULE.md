@@ -80,10 +80,12 @@ When the prompt is too long, cut in this order: duplicate style adjectives, gene
 
 Return:
 
+Before returning, inherit the prompt language selected by the parent Skill. Internal English templates and this module's English wording never select the final prompt language. Unless the user explicitly requests English, bilingual output, or translation, render all generation prose in the user's current conversation language. Preserve only quoted dialogue in its spoken language, exact reference tags, proper names, model names, and necessary acronyms. Do not append an unsolicited English version.
+
 1. Mode: T2V, I2V, V2V, R2V, FLF2V, edit, or extend.
 2. Reference role map, if any.
 3. Final prompt under the verified active-surface prompt budget.
-4. Optional Chinese compressed version when useful.
+4. Optional compressed version in the selected prompt language when useful.
 5. Shot-list or delivery note when the prompt belongs to a professional sequence.
 6. Safety or copyright note when relevant.
 

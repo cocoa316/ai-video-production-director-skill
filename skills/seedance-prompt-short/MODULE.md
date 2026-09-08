@@ -61,4 +61,4 @@ For bilingual or mixed-language compression, load [multilingual-community-exampl
 
 ## Output Contract
 
-Return one compact prompt, ideally 30-100 English words or an equivalent Chinese prompt when the user asks for Chinese or maximum compression. Translate the Director's Read into visible or audible carriers and keep its internal labels out of the prompt. Include a one-line note only if something important was removed.
+Return one compact prompt in the language selected by the parent Skill. When the user has not specified a prompt language, use the current conversation language; do not default to English or append an English version. Preserve quoted dialogue in its spoken language, exact reference tags, proper names, model names, and necessary acronyms. Aim for 30-100 English words only when English was selected, or an equivalent compact length in the selected language. Translate the Director's Read into visible or audible carriers and keep its internal labels out of the prompt. Include a one-line note only if something important was removed.

@@ -37,7 +37,9 @@ REQUIRED_PATHS = (
     "upstream.lock.json",
 )
 INVARIANTS = {
-    "dialogue language is separate from prompt language": "解释、讨论和交付说明沿用用户当前使用的语言",
+    "dialogue language is separate from prompt language": "提示词正文语言与成片对白语言分别处理",
+    "prompt defaults to conversation language": "提示词正文必须沿用当前对话语言",
+    "no unsolicited English companion": "不自行附加英文版",
     "single professional delivery may remain lightweight": "单片专业交付仍可使用轻量项目记录",
     "platform-neutral creative route exists": "平台未确定的创意发展",
     "visual and dense storyboard modes are distinct": "视觉故事板图”和 Seedance 的",
