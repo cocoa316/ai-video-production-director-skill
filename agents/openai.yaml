@@ -1,0 +1,8 @@
+interface:
+  display_name: "AI 视频制作导演"
+  short_description: "从创意规划到逐卡生成、返修与交付"
+  brand_color: "#0EA5E9"
+  default_prompt: "使用 $ai-video-production-director，先判断我当前处于哪个制作阶段，从已有信息继续；需要时协助发展故事、设计镜头、规划素材、生成提示词、审片和返修。"
+
+policy:
+  allow_implicit_invocation: true

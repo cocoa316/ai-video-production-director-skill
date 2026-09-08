@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "personal_skill": "ai-video-production-director",
+  "personal_version": "1.1.2-personal",
+  "upstream_repository": "https://github.com/Emily2040/seedance-2.0",
+  "upstream_release": "v6.7.0",
+  "upstream_release_commit": "8802978eb17bea7b1fa4e8bd230d9edfbe58e0dd",
+  "imported_on": "2026-09-07",
+  "embedding": {
+    "root_skill_replaced": true,
+    "child_entry_name": "MODULE.md",
+    "child_parent": "ai-video-production-director"
+  },
+  "notes": "The Git tree under skill/ai-video-production-director is the canonical personal source. The installed directory under CODEX_HOME is a deployment target."
+}
