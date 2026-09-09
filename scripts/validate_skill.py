@@ -10,7 +10,7 @@ from urllib.parse import unquote
 
 
 EXPECTED_NAME = "ai-video-production-director"
-EXPECTED_VERSION = "1.3.0"
+EXPECTED_VERSION = "1.4.0"
 EXPECTED_UPSTREAM = "6.7.0"
 REQUIRED_PATHS = (
     "SKILL.md",
@@ -53,17 +53,21 @@ INVARIANTS = {
     "storyboard handoff contract is required": "故事板生成与交接合同",
 }
 PROJECT_SPECIFIC_PATTERNS = (
-    "dreamina-2026-",
-    "おかえり",
-    "月见乌冬",
-    "Alpha 2 秒",
+    "C:/MyPC/",
+    "wang.ting",
+    "storyboard-demo",
+    "codex-clipboard-",
 )
 STORYBOARD_INVARIANTS = {
     "panel and board aspect ratios are distinct": "目标视频画幅属于**每个分镜格**",
     "board aspect ratio is calculated": "整板宽高比 ≈ 列数 × 单格宽高比 ÷ 行数",
-    "execution boards default to grayscale": "same_character_low_render + strict_grayscale + external_deterministic",
-    "exact labels are added deterministically": "生产版默认先生成无文字画面",
-    "panel-to-cut mapping is explicit": "panel_to_cut_map:",
+    "execution boards use identity-compatible low detail": "identity_compatible_low_detail + external_deterministic",
+    "exact Cut labels are added deterministically": "生产版默认先生成无文字画面",
+    "one panel maps to one real Cut": "panel_to_cut_map: one_panel_per_real_cut",
+    "one board covers up to nine Cuts": "对1–9个真实 Cut，默认一次生成一张完整执行板",
+    "compact layouts cover seven and eight Cuts": "7格：3＋2＋2",
+    "color exclusions are conditional": "若使用严格灰阶",
+    "single-panel repair is preferred": "只重绘该 Cut，再用确定性排版替换回原位置",
     "storyboard inheritance exclusions are explicit": "do_not_inherit:",
 }
 
