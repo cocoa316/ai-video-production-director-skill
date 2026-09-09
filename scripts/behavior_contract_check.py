@@ -15,14 +15,14 @@ else:
 
 REQUIRED_SNIPPETS = {
     "SKILL.md": [
-        "## Sequence Gate",
-        "## Director's Read Gate",
+        "## Scene、Cut 与 Clip",
+        "## 导演解读 Gate",
         "[Director's Read](references/directors-read.md)",
         "skills/seedance-sequence/MODULE.md",
         "skills/seedance-continuation/MODULE.md",
-        "accepted observed state overrides planned state",
-        "rejected footage",
-        "exact reference tags",
+        "已接受成片的可观察事实",
+        "拒绝的结果不进入连续性事实",
+        "平台真实 `@` 标签或素材 ID 原样保留",
     ],
     "skills/seedance-sequence/MODULE.md": [
         "Plan globally",
@@ -83,6 +83,9 @@ PROMPT_PRODUCING_SKILLS = {
 # Keep exemptions explicit and exhaustive. A newly added skill cannot silently
 # escape the Director's Read merely because this route table was not updated.
 NON_PROMPT_PRODUCING_SKILLS = {
+    "skills/visual-storyboard/MODULE.md": (
+        "returns a visual planning artifact for review, not final video prompt text"
+    ),
     "skills/seedance-characters/MODULE.md": (
         "returns a character card and continuity constraints, not prompt text"
     ),
@@ -102,7 +105,7 @@ DIRECTORS_READ_ROUTES = {
 }
 
 DIRECTORS_READ_ACTIVATION_PHRASES = {
-    "SKILL.md": "before any route drafts, compresses, or compiles a prompt",
+    "SKILL.md": "在叙事、人物或表演内容进入镜头设计或提示词前",
     **{rel: "before producing prompt text" for rel in PROMPT_PRODUCING_SKILLS},
     "references/directing-engine.md": "load the [Director's Read](directors-read.md) first on every route",
     "references/prompt-compiler.md": "before compilation",
@@ -359,7 +362,7 @@ def validate_directors_read_routes(root: Path, errors: list[str]) -> None:
     canonical = (root / "references" / "directors-read.md").resolve()
     actual_skills = {
         path.relative_to(root).as_posix()
-        for path in (root / "skills").rglob("SKILL.md")
+        for path in (root / "skills").rglob("MODULE.md")
     }
     classified_skills = PROMPT_PRODUCING_SKILLS | set(NON_PROMPT_PRODUCING_SKILLS)
     for rel in sorted(actual_skills - classified_skills):

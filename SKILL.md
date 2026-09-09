@@ -4,12 +4,12 @@ description: 面向完整 AI 视频项目和单镜头任务的制作导演 Skill
 license: MIT
 user-invocable: true
 metadata:
-  version: "1.1.2-personal"
+  version: "1.2.0"
 ---
 
 # AI 视频制作导演
 
-这是用户自己的 AI 视频制作总控 Skill。它先判断用户当前所处的制作阶段和需要的产物，再按需读取内部模块。不要让模型专项模块、模板或参考资料覆盖用户已经确认的创作意图。
+这是一个面向 Codex 用户的 AI 视频制作总控 Skill。它先判断用户当前所处的制作阶段和需要的产物，再按需读取内部模块。不要让模型专项模块、模板或参考资料覆盖用户已经确认的创作意图。
 
 ## 权威顺序
 
@@ -70,7 +70,7 @@ metadata:
 2. **轻量项目**：多轮故事、故事板或多个 Cut，维护精简项目状态。
 3. **严格序列**：多个 Generation Clip 存在父子素材依赖，或项目明确需要可校验 lineage 时，启用完整 sequence state 和真实状态对账。普通跨会话协作或单片专业交付仍可使用轻量项目记录。
 
-详细升级条件见[个人项目状态](references/personal-project-state.md)。
+详细升级条件见[项目状态策略](references/project-state-policy.md)。
 
 ## 总工作流
 

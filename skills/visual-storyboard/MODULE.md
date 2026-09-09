@@ -4,7 +4,7 @@ description: 将已经成熟的故事、角色和制作目标转换为可审查�
 license: MIT
 user-invocable: false
 metadata:
-  version: "1.0.0-personal"
+  version: "1.0.0"
   parent: "ai-video-production-director"
 ---
 

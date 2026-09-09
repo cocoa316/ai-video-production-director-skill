@@ -10,15 +10,17 @@ from urllib.parse import unquote
 
 
 EXPECTED_NAME = "ai-video-production-director"
-EXPECTED_PERSONAL_VERSION = "1.1.2-personal"
+EXPECTED_VERSION = "1.2.0"
 EXPECTED_UPSTREAM = "6.7.0"
 REQUIRED_PATHS = (
     "SKILL.md",
     "agents/openai.yaml",
     "references/project-director-method.md",
     "references/production-interaction-rules.md",
-    "references/personal-project-state.md",
-    "references/personal-capability-map.md",
+    "README.md",
+    "references/project-state-policy.md",
+    "references/host-capability-map.md",
+    "references/installation-and-compatibility.md",
     "references/project-artifacts.md",
     "references/visual-storyboard-method.md",
     "references/directors-read.md",
@@ -91,16 +93,16 @@ def validate(root: Path) -> list[str]:
     description = scalar(fm, "description")
     if not description or "TODO" in description:
         errors.append("SKILL.md: description is missing or unfinished")
-    if scalar(fm, "version") != EXPECTED_PERSONAL_VERSION:
+    if scalar(fm, "version") != EXPECTED_VERSION:
         errors.append(
-            f"SKILL.md: version must be {EXPECTED_PERSONAL_VERSION}"
+            f"SKILL.md: version must be {EXPECTED_VERSION}"
         )
 
     for label, phrase in INVARIANTS.items():
         if phrase not in skill_text:
             errors.append(f"missing routing invariant: {label}")
 
-    state_text = read_text(root / "references/personal-project-state.md", errors)
+    state_text = read_text(root / "references/project-state-policy.md", errors)
     if "storyboard_status:" not in state_text or "needs_review" not in state_text:
         errors.append("project state: storyboard needs_review state is missing")
     if "active_modules:" not in state_text or "workflow_status: concise|hidden" not in state_text:
@@ -114,10 +116,10 @@ def validate(root: Path) -> list[str]:
 
     try:
         lock = json.loads((root / "upstream.lock.json").read_text(encoding="utf-8"))
-        if lock.get("personal_skill") != EXPECTED_NAME:
-            errors.append("upstream.lock.json: wrong personal_skill")
-        if lock.get("personal_version") != EXPECTED_PERSONAL_VERSION:
-            errors.append("upstream.lock.json: personal version drift")
+        if lock.get("skill") != EXPECTED_NAME:
+            errors.append("upstream.lock.json: wrong skill")
+        if lock.get("version") != EXPECTED_VERSION:
+            errors.append("upstream.lock.json: version drift")
         if lock.get("upstream_release") != f"v{EXPECTED_UPSTREAM}":
             errors.append("upstream.lock.json: unexpected upstream release")
     except (OSError, UnicodeError, json.JSONDecodeError) as exc:
@@ -186,7 +188,7 @@ def validate(root: Path) -> list[str]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Validate the personal AI video director skill.")
+    parser = argparse.ArgumentParser(description="Validate the AI video production director skill.")
     parser.add_argument("root", nargs="?", type=Path, default=Path(__file__).resolve().parents[1])
     args = parser.parse_args()
     errors = validate(args.root)
@@ -195,7 +197,7 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    print("PASS: personal skill metadata, routes, modules, links, and invariants are valid")
+    print("PASS: skill metadata, routes, modules, links, and invariants are valid")
     return 0
 
 

@@ -20,7 +20,7 @@ def default_skills_dir() -> Path:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Validate and install the canonical personal skill source.")
+    parser = argparse.ArgumentParser(description="Validate and install the AI video production director skill.")
     parser.add_argument("--dest", type=Path, default=default_skills_dir(), help="Parent skills directory")
     args = parser.parse_args()
 
@@ -31,7 +31,7 @@ def main() -> int:
         print("Refusing overlapping source and destination", file=sys.stderr)
         return 2
 
-    validator = source / "scripts" / "validate_personal_skill.py"
+    validator = source / "scripts" / "validate_skill.py"
     result = subprocess.run([sys.executable, str(validator), str(source)], check=False)
     if result.returncode:
         return result.returncode

@@ -1,12 +1,12 @@
-# 个人 Skill 包与 Agent 兼容性
+# 安装与 Agent 兼容性
 
-本文件只说明个人定制版 `ai-video-production-director` 的源文件、安装方式和能力边界。上游 `seedance-2.0` 的跨客户端发布说明不作为本版本的安装合同。
+本文件说明 `ai-video-production-director` 的源文件、安装方式和能力边界。上游 `seedance-2.0` 的跨客户端发布说明不作为本项目的安装合同。
 
 ## 权威位置
 
-- Git 仓库中的 `skill/ai-video-production-director/` 是正式源。
+- 独立 Git 仓库的根目录是正式发布源；在开发仓库中，它位于 `skill/ai-video-production-director/`。
 - `$CODEX_HOME/skills/ai-video-production-director/` 或 `~/.codex/skills/ai-video-production-director/` 是部署副本。
-- 修改先进入正式源，通过个人校验后再部署；不要直接把上游仓库覆盖到个人安装目录。
+- 修改先进入正式源，通过校验后再部署；不要直接把上游仓库覆盖到安装目录。
 - `upstream.lock.json` 记录导入的上游版本。升级时先审查差异，再移植需要的模块和参考资料。
 
 ## Codex 包结构
@@ -24,7 +24,7 @@ ai-video-production-director/
 └── upstream.lock.json
 ```
 
-`evals/` 中保留的材料主要用于追溯上游设计依据，不自动构成个人版的可执行合规证明。个人版结构与路由以 `validate_personal_skill.py` 为准；模型输出质量仍要结合真实任务审查。
+`evals/` 中保留的材料主要用于追溯上游设计依据，不自动构成当前版本的可执行合规证明。当前结构与路由以 `validate_skill.py` 为准；模型输出质量仍要结合真实任务审查。
 
 只有根目录的 `SKILL.md` 参与 Skill 发现。内部专项能力使用 `MODULE.md`，避免被 Codex 当成相互竞争的独立 Skill。
 
@@ -33,13 +33,13 @@ ai-video-production-director/
 从正式源目录运行：
 
 ```text
-python scripts/validate_personal_skill.py .
-python scripts/install_personal_skill.py
+python scripts/validate_skill.py .
+python scripts/install_codex_skill.py
 ```
 
-安装器会先校验源文件，在同一 Skills 根目录暂存新副本，并保留前一安装作为可回滚备份。安装后应再次运行已安装副本中的个人校验器。
+安装器会先校验源文件，在同一 Skills 根目录暂存新副本，并保留前一安装作为可回滚备份。安装后可再次运行已安装副本中的校验器。
 
-`scripts/schema_check.py` 是可选的 Schema 开发检查器，需要额外安装 `jsonschema`；它不属于个人 Skill 安装和日常调用的前置条件。
+`scripts/schema_check.py` 是可选的 Schema 开发检查器，需要额外安装 `jsonschema`；它不属于 Skill 安装和日常调用的前置条件。
 
 ## 调用策略
 

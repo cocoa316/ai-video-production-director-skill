@@ -1,6 +1,6 @@
 # 上游 Eval Run Ledger（证据快照）
 
-这里保留的是导入版本的上游评测记录与方法证据。其原始 `eval_run.py` 假定每个 Seedance 能力都是独立可发现的 `SKILL.md`，与当前个人版“一个主 Skill＋内部 `MODULE.md`”结构不兼容，因此不作为个人版可执行评测入口。个人版的结构和路由使用 `scripts/validate_personal_skill.py` 校验；真实输出质量通过具体项目、故事板、提示词和成片审查验证。
+这里保留的是导入版本的上游评测记录与方法证据。其原始 `eval_run.py` 假定每个 Seedance 能力都是独立可发现的 `SKILL.md`，与当前“一个主 Skill＋内部 `MODULE.md`”结构不兼容，因此不作为当前版本的可执行评测入口。当前结构和路由使用 `scripts/validate_skill.py` 校验；真实输出质量通过具体项目、故事板、提示词和成片审查验证。
 
 This file is the **evidence layer** for the eval suite. The deterministic CI
 validators (`eval_schema_check.py`, `sequence_eval_check.py`, ...) prove the

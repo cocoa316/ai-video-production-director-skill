@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "personal_skill": "ai-video-production-director",
-  "personal_version": "1.1.2-personal",
+  "skill": "ai-video-production-director",
+  "version": "1.2.0",
   "upstream_repository": "https://github.com/Emily2040/seedance-2.0",
   "upstream_release": "v6.7.0",
   "upstream_release_commit": "8802978eb17bea7b1fa4e8bd230d9edfbe58e0dd",
@@ -11,5 +11,5 @@
     "child_entry_name": "MODULE.md",
     "child_parent": "ai-video-production-director"
   },
-  "notes": "The Git tree under skill/ai-video-production-director is the canonical personal source. The installed directory under CODEX_HOME is a deployment target."
+  "notes": "The standalone repository root is the distributable skill source. A directory under CODEX_HOME/skills is an installed deployment copy."
 }
