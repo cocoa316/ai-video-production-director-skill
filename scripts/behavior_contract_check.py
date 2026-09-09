@@ -17,12 +17,14 @@ REQUIRED_SNIPPETS = {
     "SKILL.md": [
         "## Scene、Cut 与 Clip",
         "## 导演解读 Gate",
+        "非叙事制作明确度",
         "[Director's Read](references/directors-read.md)",
         "skills/seedance-sequence/MODULE.md",
         "skills/seedance-continuation/MODULE.md",
         "已接受成片的可观察事实",
         "拒绝的结果不进入连续性事实",
         "平台真实 `@` 标签或素材 ID 原样保留",
+        "故事板生成与交接合同",
     ],
     "skills/seedance-sequence/MODULE.md": [
         "Plan globally",

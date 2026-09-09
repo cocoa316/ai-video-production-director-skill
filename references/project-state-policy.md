@@ -28,6 +28,7 @@ project:
   current_stage:
 
 creative:
+  lane: narrative|non_narrative
   maturity: L0|L1|L2|L3
   core_idea:
   confirmed_story:

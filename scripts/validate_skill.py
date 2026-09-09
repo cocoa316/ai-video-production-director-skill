@@ -10,7 +10,7 @@ from urllib.parse import unquote
 
 
 EXPECTED_NAME = "ai-video-production-director"
-EXPECTED_VERSION = "1.2.0"
+EXPECTED_VERSION = "1.3.0"
 EXPECTED_UPSTREAM = "6.7.0"
 REQUIRED_PATHS = (
     "SKILL.md",
@@ -23,6 +23,7 @@ REQUIRED_PATHS = (
     "references/installation-and-compatibility.md",
     "references/project-artifacts.md",
     "references/visual-storyboard-method.md",
+    "references/storyboard-generation-contract.md",
     "references/directors-read.md",
     "references/dense-storyboard-mode.md",
     "references/sequence-project-state.md",
@@ -48,6 +49,8 @@ INVARIANTS = {
     "visual and dense storyboard modes are distinct": "视觉故事板图”和 Seedance 的",
     "one Seedance compiler is active": "一次任务不要混用两套 Seedance 规则",
     "visible workflow status is reported": "制作状态｜阶段：<当前阶段，可含 L0-L3 或 Scene/Cut>",
+    "narrative and non-narrative maturity are distinct": "非叙事制作明确度",
+    "storyboard handoff contract is required": "故事板生成与交接合同",
 }
 PROJECT_SPECIFIC_PATTERNS = (
     "dreamina-2026-",
@@ -55,6 +58,14 @@ PROJECT_SPECIFIC_PATTERNS = (
     "月见乌冬",
     "Alpha 2 秒",
 )
+STORYBOARD_INVARIANTS = {
+    "panel and board aspect ratios are distinct": "目标视频画幅属于**每个分镜格**",
+    "board aspect ratio is calculated": "整板宽高比 ≈ 列数 × 单格宽高比 ÷ 行数",
+    "execution boards default to grayscale": "same_character_low_render + strict_grayscale + external_deterministic",
+    "exact labels are added deterministically": "生产版默认先生成无文字画面",
+    "panel-to-cut mapping is explicit": "panel_to_cut_map:",
+    "storyboard inheritance exclusions are explicit": "do_not_inherit:",
+}
 
 
 def read_text(path: Path, errors: list[str]) -> str:
@@ -107,6 +118,11 @@ def validate(root: Path) -> list[str]:
         errors.append("project state: storyboard needs_review state is missing")
     if "active_modules:" not in state_text or "workflow_status: concise|hidden" not in state_text:
         errors.append("project state: visible workflow status fields are missing")
+
+    storyboard_text = read_text(root / "references/storyboard-generation-contract.md", errors)
+    for label, phrase in STORYBOARD_INVARIANTS.items():
+        if phrase not in storyboard_text:
+            errors.append(f"missing storyboard invariant: {label}")
 
     ui_text = read_text(root / "agents/openai.yaml", errors)
     if "allow_implicit_invocation: true" not in ui_text:

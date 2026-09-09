@@ -1,6 +1,6 @@
 # AI Video Production Director
 
-面向 Codex 的 AI 视频制作导演 Skill。它可以从模糊想法开始协助发展故事，继续完成 Scene/Cut 设计、视觉故事板、素材职责、Seedance 提示词、连续性管理、审片返修和交付。
+面向 Codex 的 AI 视频制作导演 Skill。它可以从模糊想法开始协助发展故事，继续完成 Scene/Cut 设计、视觉故事板、素材职责、Seedance 提示词、连续性管理、审片返修和交付。本 Skill 已内置并重新组织 `seedance-2.0 v6.7.0` 的模型专项能力，用户无需另外安装 Seedance Skill。
 
 English summary: a Codex skill for story development, shot design, visual storyboards, Seedance prompt compilation, continuity, review, revision, and delivery.
 
@@ -8,7 +8,7 @@ English summary: a Codex skill for story development, shot design, visual storyb
 
 - 从大致想法讨论到可执行故事，而不是过早生成提示词。
 - 在故事成熟时主动建议视觉故事板，并按叙事、动作、空间和参考污染风险选择方案。
-- 将已经确认的设计编译为 Seedance 等视频模型的提示词。
+- 将已经确认的设计交给内置 Seedance 编译层，生成模型可执行的提示词。
 - 根据实际生成结果维护连续性，处理续写、返修、剪辑和交付。
 - 在制作阶段或路由改变时显示当前步骤和实际调用的模块。
 
@@ -57,6 +57,6 @@ python scripts/behavior_contract_check.py .
 
 ## 来源与许可
 
-本项目包含并改编了 [Emily2040/seedance-2.0](https://github.com/Emily2040/seedance-2.0) v6.7.0 的部分模块与资料，并在其上增加了制作导演总控、故事成熟度、视觉故事板、项目状态和中文默认交付等工作流。具体上游版本记录在 `upstream.lock.json`。
+本项目内置并重新组织了 [Emily2040/seedance-2.0](https://github.com/Emily2040/seedance-2.0) v6.7.0 的模型专项模块与资料，因此无需重复安装 Seedance Skill。主入口负责制作导演、创意发展、Scene/Cut、视觉故事板、项目状态和交付；内置 Seedance 模块负责提示词编译及镜头、动作、声音、续写和故障诊断。具体上游版本记录在 `upstream.lock.json`。
 
 项目使用 [MIT License](LICENSE)。
