@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "skill": "ai-video-production-director",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "upstream_repository": "https://github.com/Emily2040/seedance-2.0",
   "upstream_release": "v6.7.0",
   "upstream_release_commit": "8802978eb17bea7b1fa4e8bd230d9edfbe58e0dd",

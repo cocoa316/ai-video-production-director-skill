@@ -10,7 +10,7 @@ from urllib.parse import unquote
 
 
 EXPECTED_NAME = "ai-video-production-director"
-EXPECTED_VERSION = "1.4.0"
+EXPECTED_VERSION = "1.4.1"
 EXPECTED_UPSTREAM = "6.7.0"
 REQUIRED_PATHS = (
     "SKILL.md",

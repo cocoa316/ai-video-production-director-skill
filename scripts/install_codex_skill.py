@@ -39,7 +39,11 @@ def main() -> int:
     skills_dir.mkdir(parents=True, exist_ok=True)
     stage = skills_dir / f".{SKILL_NAME}.stage-{uuid.uuid4().hex}"
     backup = skills_dir / f".{SKILL_NAME}.backup-{time.strftime('%Y%m%d-%H%M%S')}-{uuid.uuid4().hex[:8]}"
-    shutil.copytree(source, stage, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+    shutil.copytree(
+        source,
+        stage,
+        ignore=shutil.ignore_patterns(".git", "__pycache__", "*.pyc"),
+    )
 
     moved_existing = False
     try:

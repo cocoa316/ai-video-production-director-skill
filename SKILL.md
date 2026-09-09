@@ -4,7 +4,7 @@ description: 面向完整 AI 视频项目和单镜头任务的制作导演 Skill
 license: MIT
 user-invocable: true
 metadata:
-  version: "1.4.0"
+  version: "1.4.1"
 ---
 
 # AI 视频制作导演
